@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76061599f2ae4eb2a2a16c33e6cfc07f, type: 3}
+  m_Name: Make7
+  m_EditorClassIdentifier: 
+  price:
+    type: 0
+    value: 0
+  label:
+    labelType: 0
+    linearCollection: {fileID: 0}
+    parallelCollection: {fileID: 0}
+  labelColors:
+  - {r: 0, g: 0, b: 0, a: 1}
+  spriteColors:
+  - {r: 0.4745098, g: 0.2627451, b: 0.5803922, a: 1}
+  - {r: 0.8901961, g: 0.49019608, b: 0.24705882, a: 1}
+  - {r: 0.8627451, g: 0.34509805, b: 0.38431373, a: 1}
+  - {r: 0.3019608, g: 0.654902, b: 0.84705883, a: 1}
+  - {r: 0.32941177, g: 0.7372549, b: 0.6862745, a: 1}
+  - {r: 0.92549026, g: 0.7725491, b: 0.30980393, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  spriteNoLabelColors: []
+  emptyColor: {r: 0.20784315, g: 0.23137257, b: 0.30980393, a: 1}
+  fieldColor: {r: 0.20784315, g: 0.23137257, b: 0.30980393, a: 1}
+  text: {r: 1, g: 1, b: 1, a: 1}
+  background: {r: 0.098039225, g: 0.1137255, b: 0.15686275, a: 1}
