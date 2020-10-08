@@ -13,11 +13,4 @@ MonoBehaviour:
   m_Name: ThemesCollection
   m_EditorClassIdentifier: 
   themes:
-  - {fileID: 11400000, guid: 0923cd3e6ae4843de83539cae1e470af, type: 2}
-  - {fileID: 11400000, guid: 8356ac765f0d742bc9926eab0497d2f1, type: 2}
-  - {fileID: 11400000, guid: cb092d767b67c4bf8b5fce9f86bba22d, type: 2}
-  - {fileID: 11400000, guid: 99ead064077014b19ad5fb6560851151, type: 2}
-  - {fileID: 11400000, guid: c2fff7d0d74c743f89b56de4e0e861b8, type: 2}
-  - {fileID: 11400000, guid: 97f9d72ae64d5481cac030c5626cd720, type: 2}
-  - {fileID: 11400000, guid: 4b1dd9bfc3c2c497795f8b1395e81cf6, type: 2}
-  - {fileID: 11400000, guid: 55185c29c686f45aaaf46d6f09e2e51c, type: 2}
+  - {fileID: 11400000, guid: ad7a77b3bbfa64e42894c949b0d6380b, type: 2}

@@ -23,7 +23,7 @@ MonoBehaviour:
   labelColors:
   - {r: 0, g: 0, b: 0, a: 1}
   spriteColors:
-  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 0.4811321, g: 0, b: 0.1119151, a: 1}
   spriteNoLabelColors: []
   emptyColor: {r: 0.09803922, g: 0.09803922, b: 0.09803922, a: 1}
   fieldColor: {r: 0.09803922, g: 0.09803922, b: 0.09803922, a: 1}

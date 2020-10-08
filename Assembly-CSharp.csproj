@@ -84,6 +84,7 @@
      <Compile Include="Assets\PuzzleGame\Scripts\UnityAdsController.cs" />
      <Compile Include="Assets\PuzzleGame\Scripts\UserProgress.cs" />
      <Compile Include="Assets\PuzzleGame\Scripts\WaveAlgorithm.cs" />
+     <Compile Include="Assets\Yabusaka2048\Scripts\Top.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/2019.4.11f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
