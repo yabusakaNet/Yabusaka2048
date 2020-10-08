@@ -51,7 +51,7 @@ public class GameSelector : MonoBehaviour
         ResetTriggers();
         currentGame.fieldAnimator.SetTrigger(SmallField);
         navigation.SetActive(false);
-        restartButton.SetActive(false);
+        // restartButton.SetActive(false);
     }
 
     void MaximizeCurrentGame()
@@ -65,7 +65,7 @@ public class GameSelector : MonoBehaviour
             ResetTriggers();
             currentGame.fieldAnimator.SetTrigger(BigField);
             navigation.SetActive(true);
-            restartButton.SetActive(true);
+            // restartButton.SetActive(true);
         }
         else
         {

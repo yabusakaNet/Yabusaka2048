@@ -126,7 +126,7 @@ public class GameController_2048Bricks : BaseGameController
 
             rect.sizeDelta = new Vector2(fieldTransform.rect.width / bricksCount.x, fieldTransform.rect.height);
             Color color = columnBrick.sprite.color;
-            color.a = i % 2 == 0 ? 0.20f : 0.55f;
+            // color.a = i % 2 == 0 ? 0.20f : 0.55f;
             columnBrick.sprite.color = color;
         }
     }

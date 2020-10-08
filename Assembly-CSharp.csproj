@@ -84,6 +84,7 @@
      <Compile Include="Assets\PuzzleGame\Scripts\UnityAdsController.cs" />
      <Compile Include="Assets\PuzzleGame\Scripts\UserProgress.cs" />
      <Compile Include="Assets\PuzzleGame\Scripts\WaveAlgorithm.cs" />
+     <Compile Include="Assets\Yabusaka2048\Scripts\HomeButton.cs" />
      <Compile Include="Assets\Yabusaka2048\Scripts\Top.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/2019.4.11f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -648,6 +649,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
         <HintPath>/Users/sho.yamanaka/Project/Yabusaka2048/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+        <HintPath>/Users/sho.yamanaka/Project/Yabusaka2048/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
         <HintPath>/Users/sho.yamanaka/Project/Yabusaka2048/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
