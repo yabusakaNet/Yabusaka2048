@@ -12,6 +12,7 @@ ScriptsOnlyBuild:
     - GameOverAds
     - GamePreset
     - GameSelector
+    - HomeButton
     - MonetizeButton
     - NoPathWarning
     - NumberedBrick
@@ -33,6 +34,7 @@ ScriptsOnlyBuild:
     - ThemePreset
     - ThemePreview
     - ThemesCollection
+    - Top
     - TopScoreCounter
     - UnityAdsController
     Unity.Rider.Editor.dll:
@@ -40,10 +42,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -64,7 +64,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.ToggleGroup
-    - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
     Assets/PuzzleGame/Scenes/Game.unity:
     - Class: 1
@@ -104,96 +103,185 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11260}
     - Class: 114
-      Script: {instanceID: 11304}
+      Script: {instanceID: 11306}
     - Class: 114
-      Script: {instanceID: 11344}
+      Script: {instanceID: 11374}
     - Class: 114
-      Script: {instanceID: 11370}
+      Script: {instanceID: 11396}
     - Class: 114
-      Script: {instanceID: 11392}
+      Script: {instanceID: 11418}
     - Class: 114
-      Script: {instanceID: 11412}
+      Script: {instanceID: 11424}
     - Class: 114
-      Script: {instanceID: 11416}
+      Script: {instanceID: 11578}
     - Class: 114
-      Script: {instanceID: 11570}
+      Script: {instanceID: 11584}
     - Class: 114
-      Script: {instanceID: 11576}
+      Script: {instanceID: 11628}
     - Class: 114
-      Script: {instanceID: 11620}
+      Script: {instanceID: 11648}
     - Class: 114
-      Script: {instanceID: 11638}
+      Script: {instanceID: 11772}
     - Class: 114
-      Script: {instanceID: 11760}
+      Script: {instanceID: 11856}
     - Class: 114
-      Script: {instanceID: 11842}
-    - Class: 114
-      Script: {instanceID: 11862}
-    - Class: 114
-      Script: {instanceID: 11864}
-    - Class: 114
-      Script: {instanceID: 11920}
+      Script: {instanceID: 11878}
     - Class: 114
       Script: {instanceID: 11940}
     - Class: 114
-      Script: {instanceID: 12000}
+      Script: {instanceID: 11960}
     - Class: 114
-      Script: {instanceID: 12010}
+      Script: {instanceID: 12022}
     - Class: 114
-      Script: {instanceID: 12164}
+      Script: {instanceID: 12232}
     - Class: 114
-      Script: {instanceID: 12206}
+      Script: {instanceID: 12238}
     - Class: 114
-      Script: {instanceID: 12210}
+      Script: {instanceID: 12284}
     - Class: 114
-      Script: {instanceID: 12256}
-    - Class: 114
-      Script: {instanceID: 12364}
-    - Class: 114
-      Script: {instanceID: 12420}
-    - Class: 114
-      Script: {instanceID: 12478}
+      Script: {instanceID: 12396}
     - Class: 114
       Script: {instanceID: 12510}
     - Class: 114
-      Script: {instanceID: 12548}
+      Script: {instanceID: 12634}
     - Class: 114
-      Script: {instanceID: 12598}
+      Script: {instanceID: 12690}
     - Class: 114
-      Script: {instanceID: 12608}
+      Script: {instanceID: 12754}
     - Class: 114
-      Script: {instanceID: 12652}
+      Script: {instanceID: 12814}
     - Class: 114
-      Script: {instanceID: 12714}
+      Script: {instanceID: 12892}
     - Class: 114
-      Script: {instanceID: 12770}
+      Script: {instanceID: 12992}
     - Class: 114
-      Script: {instanceID: 12848}
+      Script: {instanceID: 13010}
     - Class: 114
-      Script: {instanceID: 12956}
+      Script: {instanceID: 13118}
     - Class: 114
-      Script: {instanceID: 12968}
-    - Class: 114
-      Script: {instanceID: 13064}
-    - Class: 114
-      Script: {instanceID: 13088}
-    - Class: 114
-      Script: {instanceID: 13186}
-    - Class: 114
-      Script: {instanceID: 13354}
-    - Class: 114
-      Script: {instanceID: 13370}
-    - Class: 114
-      Script: {instanceID: 13408}
-    - Class: 114
-      Script: {instanceID: 13414}
+      Script: {instanceID: 13148}
     - Class: 114
       Script: {instanceID: 13418}
     - Class: 114
-      Script: {instanceID: 13436}
+      Script: {instanceID: 13434}
+    - Class: 114
+      Script: {instanceID: 13474}
+    - Class: 114
+      Script: {instanceID: 13480}
+    - Class: 114
+      Script: {instanceID: 13484}
+    - Class: 114
+      Script: {instanceID: 13502}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 241
+      Script: {instanceID: 0}
+    - Class: 243
+      Script: {instanceID: 0}
+    - Class: 245
+      Script: {instanceID: 0}
+    Assets/Yabusaka2048/Scenes/Top.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11252}
+    - Class: 114
+      Script: {instanceID: 11254}
+    - Class: 114
+      Script: {instanceID: 11256}
+    - Class: 114
+      Script: {instanceID: 11258}
+    - Class: 114
+      Script: {instanceID: 11260}
+    - Class: 114
+      Script: {instanceID: 11348}
+    - Class: 114
+      Script: {instanceID: 11418}
+    - Class: 114
+      Script: {instanceID: 11584}
+    - Class: 114
+      Script: {instanceID: 11648}
+    - Class: 114
+      Script: {instanceID: 11856}
+    - Class: 114
+      Script: {instanceID: 11880}
+    - Class: 114
+      Script: {instanceID: 11960}
+    - Class: 114
+      Script: {instanceID: 12022}
+    - Class: 114
+      Script: {instanceID: 12032}
+    - Class: 114
+      Script: {instanceID: 12190}
+    - Class: 114
+      Script: {instanceID: 12452}
+    - Class: 114
+      Script: {instanceID: 12510}
+    - Class: 114
+      Script: {instanceID: 12582}
+    - Class: 114
+      Script: {instanceID: 12644}
+    - Class: 114
+      Script: {instanceID: 12690}
+    - Class: 114
+      Script: {instanceID: 12754}
+    - Class: 114
+      Script: {instanceID: 12892}
+    - Class: 114
+      Script: {instanceID: 13004}
+    - Class: 114
+      Script: {instanceID: 13022}
+    - Class: 114
+      Script: {instanceID: 13118}
+    - Class: 114
+      Script: {instanceID: 13148}
+    - Class: 114
+      Script: {instanceID: 13250}
+    - Class: 114
+      Script: {instanceID: 13418}
+    - Class: 114
+      Script: {instanceID: 13480}
+    - Class: 115
       Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
@@ -604,7 +692,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: f3075b67324ba95376d4d3e1d6fded7c
+      Hash: 01079fbf91540b56717cd5a5a0c2af27
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController_2048Bricks
@@ -716,6 +804,18 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.Advertisements.dll
     namespaceName: UnityEngine.Advertisements.Utilities
     className: ApplicationQuit
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HomeButton
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Top
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -886,5 +986,6 @@ ScriptsOnlyBuild:
     className: Panel
   platform: 13
   scenePathNames:
+  - Assets/Yabusaka2048/Scenes/Top.unity
   - Assets/PuzzleGame/Scenes/Game.unity
   playerPath: /Users/sho.yamanaka/Project/Yabusaka2048/Build/yabusaka2048.apk

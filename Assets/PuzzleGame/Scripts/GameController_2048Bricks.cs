@@ -25,6 +25,7 @@ public class GameController_2048Bricks : BaseGameController
 
     public PlaySfx landingSfx;
     public PlaySfx mergingSfx;
+    public PlaySfx bgmSfx;
 
     NumberedBrick nextBrick;
 

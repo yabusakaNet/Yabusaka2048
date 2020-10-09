@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/PuzzleGame/Scenes/Game.unity
+- path: Assets/Yabusaka2048/Scenes/Top.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
