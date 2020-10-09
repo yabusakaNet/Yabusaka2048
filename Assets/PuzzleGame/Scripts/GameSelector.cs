@@ -46,7 +46,7 @@ public class GameSelector : MonoBehaviour
             MaximizeCurrentGame();
             return;
         }
-
+        
         Time.timeScale = 0;
         ResetTriggers();
         currentGame.fieldAnimator.SetTrigger(SmallField);
