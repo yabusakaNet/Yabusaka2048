@@ -9,6 +9,7 @@ public abstract class BaseGameController : MonoBehaviour
     public Vector2Int bricksCount;
     public RectTransform fieldTransform;
     public NumberedBrick brickPrefab;
+    public  PlaySfx bgmSfx;
 
     [Range(0f, 1f)]
     public float coinProbability;

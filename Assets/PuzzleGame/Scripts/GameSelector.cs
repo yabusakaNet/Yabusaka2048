@@ -44,6 +44,7 @@ public class GameSelector : MonoBehaviour
         if (!value)
         {
             MaximizeCurrentGame();
+            currentGame.bgmSfx.Play ();
             return;
         }
         
@@ -52,6 +53,7 @@ public class GameSelector : MonoBehaviour
         currentGame.fieldAnimator.SetTrigger(SmallField);
         navigation.SetActive(false);
         // restartButton.SetActive(false);
+        currentGame.bgmSfx.Pause ();
     }
 
     void MaximizeCurrentGame()
@@ -156,6 +158,8 @@ public class GameSelector : MonoBehaviour
 
         restartButton.SetActive(false);
         gameOver.SetActive(true);
+
+        currentGame.bgmSfx.Pause ();
     }
 
     void Awake()

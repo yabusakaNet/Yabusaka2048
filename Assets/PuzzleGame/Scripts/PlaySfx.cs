@@ -18,4 +18,8 @@ public class PlaySfx : MonoBehaviour
         source.pitch = Random.Range(minPitch, maxPitch);
         source.Play();
     }
+    public void Pause ()
+    {
+        source.Pause ();
+    }
 }

@@ -25,7 +25,6 @@ public class GameController_2048Bricks : BaseGameController
 
     public PlaySfx landingSfx;
     public PlaySfx mergingSfx;
-    public  PlaySfx bgmSfx;
 
     NumberedBrick nextBrick;
 
@@ -35,6 +34,8 @@ public class GameController_2048Bricks : BaseGameController
 
     bool isFalling;
     bool isAnimating;
+
+    const float BaseSpeed = 1f;
 
     GameState2048Bricks gameState;
     
@@ -93,6 +94,8 @@ public class GameController_2048Bricks : BaseGameController
         SpawnStartingBricks();
         nextBrick.Number = GetRandomNumber();
         nextBrick.ColorIndex = GetColorIndex(nextBrick.Number);
+
+        speed = BaseSpeed;
     }
 
     void SpawnStartingBricks()
@@ -455,6 +458,8 @@ public class GameController_2048Bricks : BaseGameController
                     );
 
                     gameState.Score += brick.Number;
+                    speed += brick.Number / 1000f;
+                    Debug.Log(speed);
                 }
             );
         }
