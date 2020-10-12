@@ -650,6 +650,9 @@
  <Reference Include="Unity.Rider.Editor">
  <HintPath>/Users/sho.yamanaka/Project/Yabusaka2048/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>/Users/sho.yamanaka/Project/Yabusaka2048/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>/Users/sho.yamanaka/Project/Yabusaka2048/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>

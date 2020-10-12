@@ -459,7 +459,7 @@ public class GameController_2048Bricks : BaseGameController
 
                     gameState.Score += brick.Number;
                     speed += brick.Number / 1000f;
-                    Debug.Log(speed);
+                    // Debug.Log(speed);
                 }
             );
         }
