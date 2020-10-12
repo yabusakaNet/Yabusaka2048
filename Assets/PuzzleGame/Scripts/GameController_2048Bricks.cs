@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public enum Controls
@@ -38,150 +35,138 @@ public class GameController_2048Bricks : BaseGameController
     const float BaseSpeed = 1f;
 
     GameState2048Bricks gameState;
-    
+
     class BrickPath
     {
         public NumberedBrick brick;
         public List<Vector2Int> path;
     }
 
-    int GetRandomNumber()
+    int GetRandomNumber ()
     {
-        return Mathf.RoundToInt(Mathf.Pow(2, Random.Range(1, 5)));
+        return Mathf.RoundToInt (Mathf.Pow (2, Random.Range (1, 5)));
     }
 
-    int GetColorIndex(int number)
+    int GetColorIndex (int number)
     {
-        return Mathf.RoundToInt(Mathf.Log(number, 2) - 1);
+        return Mathf.RoundToInt (Mathf.Log (number, 2) - 1);
     }
 
-    void Start()
+    void Start ()
     {
-        inputController.gameObject.SetActive(controls == Controls.Swipe);
-        tapInputController.gameObject.SetActive(controls == Controls.Tap);
+        inputController.gameObject.SetActive (controls == Controls.Swipe);
+        tapInputController.gameObject.SetActive (controls == Controls.Tap);
 
-        if (controls == Controls.Swipe)
-        {
+        if (controls == Controls.Swipe) {
             InputController.Left += OnLeft;
             InputController.Right += OnRight;
             InputController.Down += OnDown;
-        }
-        else
-        {
+        } else {
             tapInputController.PointerDown += OnTapMove;
             tapInputController.PointerDrag += OnTapMove;
             tapInputController.PointerUp += OnDown;
-            SpawnColumns();
+            SpawnColumns ();
         }
 
-        SpawnNextBrick();
+        SpawnNextBrick ();
 
         field = new NumberedBrick[bricksCount.x, bricksCount.y];
 
-        gameState = UserProgress.Current.GetGameState<GameState2048Bricks>(name);
-        if (gameState == null)
-        {
-            gameState = new GameState2048Bricks();
-            UserProgress.Current.SetGameState(name, gameState);
+        gameState = UserProgress.Current.GetGameState<GameState2048Bricks> (name);
+        if (gameState == null) {
+            gameState = new GameState2048Bricks ();
+            UserProgress.Current.SetGameState (name, gameState);
         }
 
         UserProgress.Current.CurrentGameId = name;
 
-        if (LoadGame())
+        if (LoadGame ())
             return;
 
         gameState.Score = 0;
-        SpawnStartingBricks();
-        nextBrick.Number = GetRandomNumber();
-        nextBrick.ColorIndex = GetColorIndex(nextBrick.Number);
+        SpawnStartingBricks ();
+        nextBrick.Number = GetRandomNumber ();
+        nextBrick.ColorIndex = GetColorIndex (nextBrick.Number);
 
         speed = BaseSpeed;
     }
 
-    void SpawnStartingBricks()
+    void SpawnStartingBricks ()
     {
-        currentBrick = new Vector2Int(bricksCount.x / 2, bricksCount.y - 1);
-        Spawn(currentBrick, GetRandomNumber());
+        currentBrick = new Vector2Int (bricksCount.x / 2, bricksCount.y - 1);
+        Spawn (currentBrick, GetRandomNumber ());
 
-        List<int> numbers = new List<int>(bricksCount.x);
-        for (int i = 1; i <= bricksCount.x; i++)
-        {
-            numbers.Add(Mathf.RoundToInt(Mathf.Pow(2, i)));
+        List<int> numbers = new List<int> (bricksCount.x);
+        for (int i = 1; i <= bricksCount.x; i++) {
+            numbers.Add (Mathf.RoundToInt (Mathf.Pow (2, i)));
         }
 
-        for (int i = 0; i < bricksCount.x; i++)
-        {
-            int rand = Random.Range(0, numbers.Count);
-            Spawn(new Vector2Int(i, 0), numbers[rand]);
-            numbers.RemoveAt(rand);
+        for (int i = 0; i < bricksCount.x; i++) {
+            int rand = Random.Range (0, numbers.Count);
+            Spawn (new Vector2Int (i, 0), numbers[rand]);
+            numbers.RemoveAt (rand);
         }
     }
 
-    void SpawnColumns()
+    void SpawnColumns ()
     {
-        for (int i = 0; i < bricksCount.x; i++)
-        {
-            Brick columnBrick = Instantiate(columnPrefab, fieldTransform);
-            columnBrick.transform.SetParent(tapInputController.transform, false);
-            RectTransform rect = columnBrick.GetComponent<RectTransform>();
+        for (int i = 0; i < bricksCount.x; i++) {
+            Brick columnBrick = Instantiate (columnPrefab, fieldTransform);
+            columnBrick.transform.SetParent (tapInputController.transform, false);
+            RectTransform rect = columnBrick.GetComponent<RectTransform> ();
             rect.anchorMin = Vector2.zero;
             rect.anchorMax = Vector2.zero;
-            rect.anchoredPosition = new Vector2(GetBrickPosition(new Vector2(i, 0)).x, fieldTransform.rect.height / 2);
+            rect.anchoredPosition = new Vector2 (GetBrickPosition (new Vector2 (i, 0)).x, fieldTransform.rect.height / 2);
 
-            rect.sizeDelta = new Vector2(fieldTransform.rect.width / bricksCount.x, fieldTransform.rect.height);
+            rect.sizeDelta = new Vector2 (fieldTransform.rect.width / bricksCount.x, fieldTransform.rect.height);
             Color color = columnBrick.sprite.color;
             // color.a = i % 2 == 0 ? 0.20f : 0.55f;
             columnBrick.sprite.color = color;
         }
     }
 
-    void OnDestroy()
+    void OnDestroy ()
     {
-        if (controls == Controls.Swipe)
-        {
+        if (controls == Controls.Swipe) {
             InputController.Left -= OnLeft;
             InputController.Right -= OnRight;
             InputController.Down -= OnDown;
-        }
-        else
-        {
+        } else {
             tapInputController.PointerDown -= OnTapMove;
             tapInputController.PointerDrag -= OnTapMove;
             tapInputController.PointerUp -= OnDown;
         }
     }
 
-    void OnLeft()
+    void OnLeft ()
     {
         if (!isAnimating && !isFalling)
-            MoveHorizontally(-1);
+            MoveHorizontally (-1);
     }
 
-    void OnRight()
+    void OnRight ()
     {
         if (!isAnimating && !isFalling)
-            MoveHorizontally(1);
+            MoveHorizontally (1);
     }
 
-    void OnDown()
+    void OnDown ()
     {
         if (isAnimating || isFalling)
             return;
 
         isFalling = true;
         timeSinceMoveDown = 0f;
-        MoveDown();
+        MoveDown ();
     }
 
-    void OnTapMove(int value)
+    void OnTapMove (int value)
     {
         if (isAnimating || isFalling) return;
 
         int path = 0;
-        if (value < currentBrick.x)
-        {
-            for (int i = currentBrick.x - 1; i >= value; i--)
-            {
+        if (value < currentBrick.x) {
+            for (int i = currentBrick.x - 1; i >= value; i--) {
                 if (field[i, currentBrick.y] != null)
                     break;
 
@@ -189,10 +174,8 @@ public class GameController_2048Bricks : BaseGameController
             }
         }
 
-        if (value > currentBrick.x)
-        {
-            for (int i = currentBrick.x + 1; i <= value; i++)
-            {
+        if (value > currentBrick.x) {
+            for (int i = currentBrick.x + 1; i <= value; i++) {
                 if (field[i, currentBrick.y] != null)
                     break;
 
@@ -200,141 +183,129 @@ public class GameController_2048Bricks : BaseGameController
             }
         }
 
-        int steps = Mathf.Abs(currentBrick.x - value);
+        int steps = Mathf.Abs (currentBrick.x - value);
         value = path < steps ? currentBrick.x : value;
-        
-        Move(value);
+
+        Move (value);
     }
 
-    void Update()
+    void Update ()
     {
         if (isAnimating)
             return;
 
         timeSinceMoveDown += Time.deltaTime;
 
-        if (isFalling && timeSinceMoveDown >= 1f / fallSpeed)
-        {
+        if (isFalling && timeSinceMoveDown >= 1f / fallSpeed) {
             timeSinceMoveDown -= 1f / fallSpeed;
-            MoveDown();
+            MoveDown ();
         }
 
-        if (!isFalling && timeSinceMoveDown >= 1 / speed)
-        {
+        if (!isFalling && timeSinceMoveDown >= 1 / speed) {
             timeSinceMoveDown -= 1f / speed;
-            MoveDown();
+            MoveDown ();
         }
     }
 
-    bool LoadGame()
+    bool LoadGame ()
     {
-        int[] numbers = gameState.GetField();
+        int[] numbers = gameState.GetField ();
         if (numbers == null || numbers.Length != bricksCount.x * bricksCount.y)
             return false;
 
-        for (int x = 0; x < bricksCount.x; x++)
-        {
-            for (int y = 0; y < bricksCount.y; y++)
-            {
+        for (int x = 0; x < bricksCount.x; x++) {
+            for (int y = 0; y < bricksCount.y; y++) {
                 if (numbers[x * bricksCount.y + y] > 0)
-                    Spawn(new Vector2Int(x, y), numbers[x * bricksCount.y + y]);
+                    Spawn (new Vector2Int (x, y), numbers[x * bricksCount.y + y]);
             }
         }
 
         currentBrick = gameState.CurrentBrick;
         nextBrick.Number = gameState.NextBrick;
-        nextBrick.ColorIndex = GetColorIndex(nextBrick.Number);
+        nextBrick.ColorIndex = GetColorIndex (nextBrick.Number);
 
         return true;
     }
 
-    void SaveGame()
+    void SaveGame ()
     {
         int[] numbers = new int[bricksCount.x * bricksCount.y];
-        for (int x = 0; x < bricksCount.x; x++)
-        {
-            for (int y = 0; y < bricksCount.y; y++)
-            {
+        for (int x = 0; x < bricksCount.x; x++) {
+            for (int y = 0; y < bricksCount.y; y++) {
                 numbers[x * bricksCount.y + y] = field[x, y] != null ? field[x, y].Number : 0;
             }
         }
 
-        gameState.SetField(numbers);
+        gameState.SetField (numbers);
         gameState.CurrentBrick = currentBrick;
         gameState.NextBrick = nextBrick.Number;
-        UserProgress.Current.SaveGameState(name);
+        UserProgress.Current.SaveGameState (name);
     }
 
-    void Spawn(Vector2Int coords, int number)
+    void Spawn (Vector2Int coords, int number)
     {
-        NumberedBrick brick = Instantiate(brickPrefab, fieldTransform);
+        NumberedBrick brick = Instantiate (brickPrefab, fieldTransform);
 
-        brick.transform.SetParent(fieldTransform, false);
-        brick.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-        brick.GetComponent<RectTransform>().anchorMax = Vector2.zero;
-        brick.GetComponent<RectTransform>().anchoredPosition = GetBrickPosition(new Vector2(coords.x, coords.y));
+        brick.transform.SetParent (fieldTransform, false);
+        brick.GetComponent<RectTransform> ().anchorMin = Vector2.zero;
+        brick.GetComponent<RectTransform> ().anchorMax = Vector2.zero;
+        brick.GetComponent<RectTransform> ().anchoredPosition = GetBrickPosition (new Vector2 (coords.x, coords.y));
 
         brick.Number = number;
-        brick.ColorIndex = GetColorIndex(number);
+        brick.ColorIndex = GetColorIndex (number);
 
         field[coords.x, coords.y] = brick;
     }
 
-    void SpawnNextBrick()
+    void SpawnNextBrick ()
     {
-        nextBrick = Instantiate(brickPrefab, nextBrickPoint);
-        nextBrick.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
-        nextBrick.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
-        nextBrick.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        nextBrick = Instantiate (brickPrefab, nextBrickPoint);
+        nextBrick.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.5f, 0.5f);
+        nextBrick.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.5f, 0.5f);
+        nextBrick.GetComponent<RectTransform> ().anchoredPosition = Vector2.zero;
     }
 
-    void MoveDown()
+    void MoveDown ()
     {
         NumberedBrick brick = field[currentBrick.x, currentBrick.y];
 
-        if (currentBrick.y > 0 && field[currentBrick.x, currentBrick.y - 1] == null)
-        {
+        if (currentBrick.y > 0 && field[currentBrick.x, currentBrick.y - 1] == null) {
             field[currentBrick.x, currentBrick.y] = null;
             currentBrick.y--;
             field[currentBrick.x, currentBrick.y] = brick;
 
-            brick.GetComponent<RectTransform>().anchoredPosition =
-                GetBrickPosition(new Vector2(currentBrick.x, currentBrick.y));
+            brick.GetComponent<RectTransform> ().anchoredPosition =
+                GetBrickPosition (new Vector2 (currentBrick.x, currentBrick.y));
 
-            SaveGame();
-        }
-        else
-        {
+            SaveGame ();
+        } else {
             isAnimating = true;
-            landingSfx.Play();
-            brick.DoLandingAnimation(
-                () =>
-                {
+            landingSfx.Play ();
+            brick.DoLandingAnimation (
+                () => {
                     isAnimating = false;
-                    Merge(
-                        new List<Vector2Int> {currentBrick},
-                        () =>
-                        {
+                    Merge (
+                        new List<Vector2Int> { currentBrick },
+                        () => {
                             isFalling = false;
 
-                            currentBrick = new Vector2Int(bricksCount.x / 2, bricksCount.y - 1);
+                            currentBrick = new Vector2Int (bricksCount.x / 2, bricksCount.y - 1);
 
-                            if (field[currentBrick.x, currentBrick.y] != null)
-                            {
+                            if (field[currentBrick.x, currentBrick.y] != null) {
                                 isAnimating = true;
 
-                                gameState.SetField(new int[0]);
-                                UserProgress.Current.SaveGameState(name);
+                                gameState.SetField (new int[0]);
+                                UserProgress.Current.SaveGameState (name);
 
-                                OnGameOver();
+                                OnGameOver ();
                                 return;
                             }
 
-                            Spawn(currentBrick, nextBrick.Number);
-                            nextBrick.Number = GetRandomNumber();
-                            nextBrick.ColorIndex = GetColorIndex(nextBrick.Number);
+                            Spawn (currentBrick, nextBrick.Number);
+                            nextBrick.Number = GetRandomNumber ();
+                            nextBrick.ColorIndex = GetColorIndex (nextBrick.Number);
 
-                            SaveGame();
+                            SaveGame ();
                         }
                     );
                 }
@@ -342,15 +313,15 @@ public class GameController_2048Bricks : BaseGameController
         }
     }
 
-    void MoveHorizontally(int value)
+    void MoveHorizontally (int value)
     {
         int x = currentBrick.x + value;
-        Move(x);
+        Move (x);
     }
 
-    void Move(int value)
+    void Move (int value)
     {
-        if (value < 0 || value >= field.GetLength(0) || field[value, currentBrick.y] != null)
+        if (value < 0 || value >= field.GetLength (0) || field[value, currentBrick.y] != null)
             return;
 
         NumberedBrick brick = field[currentBrick.x, currentBrick.y];
@@ -359,24 +330,23 @@ public class GameController_2048Bricks : BaseGameController
         currentBrick.x = value;
         field[currentBrick.x, currentBrick.y] = brick;
 
-        brick.GetComponent<RectTransform>().anchoredPosition =
-            GetBrickPosition(new Vector2(currentBrick.x, currentBrick.y));
+        brick.GetComponent<RectTransform> ().anchoredPosition =
+            GetBrickPosition (new Vector2 (currentBrick.x, currentBrick.y));
     }
 
-    void Merge(List<Vector2Int> toMerge, Action onComplete)
+    void Merge (List<Vector2Int> toMerge, Action onComplete)
     {
         isAnimating = true;
 
-        List<Vector2Int> newCoords = new List<Vector2Int>();
+        List<Vector2Int> newCoords = new List<Vector2Int> ();
 
         int animationsLeft = 0;
-        foreach (Vector2Int coords in toMerge)
-        {
+        foreach (Vector2Int coords in toMerge) {
             if (field[coords.x, coords.y] == null)
                 continue;
 
             NumberedBrick brick = field[coords.x, coords.y];
-            List<Vector2Int> area = WaveAlgorithm.GetArea(
+            List<Vector2Int> area = WaveAlgorithm.GetArea (
                 field,
                 coords,
                 GetAdjacentCoords,
@@ -386,20 +356,17 @@ public class GameController_2048Bricks : BaseGameController
             if (area.Count < 2)
                 continue;
 
-            newCoords.AddRange(area);
+            newCoords.AddRange (area);
 
-            List<BrickPath> paths = new List<BrickPath>();
-            foreach (Vector2Int toMove in area)
-            {
-                if (toMove == coords)
-                {
+            List<BrickPath> paths = new List<BrickPath> ();
+            foreach (Vector2Int toMove in area) {
+                if (toMove == coords) {
                     continue;
                 }
 
-                BrickPath brickPath = new BrickPath
-                {
+                BrickPath brickPath = new BrickPath {
                     brick = field[toMove.x, toMove.y],
-                    path = WaveAlgorithm.GetPath(
+                    path = WaveAlgorithm.GetPath (
                         field,
                         toMove,
                         coords,
@@ -407,8 +374,8 @@ public class GameController_2048Bricks : BaseGameController
                         b => b != null && b.Number == brick.Number
                     )
                 };
-                brickPath.path.RemoveAt(0);
-                paths.Add(brickPath);
+                brickPath.path.RemoveAt (0);
+                paths.Add (brickPath);
             }
 
             foreach (Vector2Int toMove in area)
@@ -418,47 +385,43 @@ public class GameController_2048Bricks : BaseGameController
             animationsLeft++;
 
             int areaSize = area.Count;
-            AnimateMerge(
+            AnimateMerge (
                 paths,
-                () =>
-                {
+                () => {
                     animationsLeft--;
 
                     if (animationsLeft > 0)
                         return;
 
-                    mergingSfx.Play();
+                    mergingSfx.Play ();
 
-                    brick.Number *= Mathf.ClosestPowerOfTwo(areaSize);
-                    brick.ColorIndex = GetColorIndex(brick.Number);
-                    brick.DoMergingAnimation(
-                        () =>
-                        {
-                            if (Random.Range(0f, 1f) < coinProbability)
-                            {
+                    brick.Number *= Mathf.ClosestPowerOfTwo (areaSize);
+                    brick.ColorIndex = GetColorIndex (brick.Number);
+                    brick.DoMergingAnimation (
+                        () => {
+                            if (Random.Range (0f, 1f) < coinProbability) {
                                 UserProgress.Current.Coins++;
 
-                                GameObject vfx = Resources.Load<GameObject>("CoinVFX");
-                                vfx = Instantiate(vfx, fieldTransform.parent);
+                                GameObject vfx = Resources.Load<GameObject> ("CoinVFX");
+                                vfx = Instantiate (vfx, fieldTransform.parent);
 
                                 vfx.transform.position = brick.transform.position;
 
-                                Destroy(vfx, 1.5f);
+                                Destroy (vfx, 1.5f);
                             }
 
                             if (newCoords.Count > 0)
-                                Normalize(
-                                    normalized =>
-                                    {
-                                        newCoords.AddRange(normalized);
-                                        Merge(newCoords, onComplete);
+                                Normalize (
+                                    normalized => {
+                                        newCoords.AddRange (normalized);
+                                        Merge (newCoords, onComplete);
                                     }
                                 );
                         }
                     );
 
                     gameState.Score += brick.Number;
-                    speed += brick.Number / 1000f;
+                    speed = BaseSpeed + (gameState.Score / 1000f);
                     // Debug.Log(speed);
                 }
             );
@@ -468,52 +431,47 @@ public class GameController_2048Bricks : BaseGameController
             return;
 
         isAnimating = false;
-        onComplete.Invoke();
+        onComplete.Invoke ();
     }
 
-    void AnimateMerge(List<BrickPath> brickPaths, Action onComplete)
+    void AnimateMerge (List<BrickPath> brickPaths, Action onComplete)
     {
-        brickPaths.Sort((p0, p1) => p1.path.Count.CompareTo(p0.path.Count));
+        brickPaths.Sort ((p0, p1) => p1.path.Count.CompareTo (p0.path.Count));
 
         int pathLength = brickPaths[0].path.Count;
 
-        if (pathLength == 0)
-        {
-            brickPaths.ForEach(p => Destroy(p.brick.gameObject));
-            onComplete.Invoke();
+        if (pathLength == 0) {
+            brickPaths.ForEach (p => Destroy (p.brick.gameObject));
+            onComplete.Invoke ();
             return;
         }
 
         int animationsLeft = 0;
-        foreach (BrickPath brickPath in brickPaths)
-        {
+        foreach (BrickPath brickPath in brickPaths) {
             if (brickPath.path.Count < pathLength)
                 break;
 
-            Vector2 position = GetBrickPosition(brickPath.path[0]);
+            Vector2 position = GetBrickPosition (brickPath.path[0]);
 
-            brickPath.path.RemoveAt(0);
+            brickPath.path.RemoveAt (0);
 
             animationsLeft++;
-            brickPath.brick.DoLocalMove(
+            brickPath.brick.DoLocalMove (
                 position,
-                () =>
-                {
+                () => {
                     animationsLeft--;
                     if (animationsLeft == 0)
-                        AnimateMerge(brickPaths, onComplete);
+                        AnimateMerge (brickPaths, onComplete);
                 }
             );
         }
     }
 
-    void Normalize(Action<List<Vector2Int>> onComplete)
+    void Normalize (Action<List<Vector2Int>> onComplete)
     {
-        List<Vector2Int> normalized = new List<Vector2Int>();
-        for (int x = 0; x < field.GetLength(0); x++)
-        {
-            for (int y = 0; y < field.GetLength(1); y++)
-            {
+        List<Vector2Int> normalized = new List<Vector2Int> ();
+        for (int x = 0; x < field.GetLength (0); x++) {
+            for (int y = 0; y < field.GetLength (1); y++) {
                 NumberedBrick brick = field[x, y];
 
                 if (brick == null)
@@ -528,28 +486,25 @@ public class GameController_2048Bricks : BaseGameController
 
                 field[x, y] = null;
                 field[x, yEmpty] = brick;
-                Vector2Int brickCoords = new Vector2Int(x, yEmpty);
+                Vector2Int brickCoords = new Vector2Int (x, yEmpty);
 
-                normalized.Add(brickCoords);
+                normalized.Add (brickCoords);
 
                 bool isFirst = normalized.Count == 1;
-                brick.DoLocalMove(
-                    GetBrickPosition(brickCoords),
-                    () =>
-                    {
-                        if (isFirst)
-                        {
-                            brick.DoLandingAnimation(() => onComplete.Invoke(normalized));
-                            landingSfx.Play();
-                        }
-                        else
-                            brick.DoLandingAnimation(null);
+                brick.DoLocalMove (
+                    GetBrickPosition (brickCoords),
+                    () => {
+                        if (isFirst) {
+                            brick.DoLandingAnimation (() => onComplete.Invoke (normalized));
+                            landingSfx.Play ();
+                        } else
+                            brick.DoLandingAnimation (null);
                     }
                 );
             }
         }
 
         if (normalized.Count == 0)
-            onComplete.Invoke(normalized);
+            onComplete.Invoke (normalized);
     }
 }
