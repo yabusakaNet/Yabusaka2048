@@ -224,6 +224,8 @@ public class GameController_2048Bricks : BaseGameController
         nextBrick.Number = gameState.NextBrick;
         nextBrick.ColorIndex = GetColorIndex (nextBrick.Number);
 
+        speed = BaseSpeed + (gameState.Score / 1000f);
+
         return true;
     }
 
