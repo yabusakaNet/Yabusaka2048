@@ -13,8 +13,6 @@ public class GameController_2048Bricks : BaseGameController
 {
     public float speed;
     public float fallSpeed;
-    public float BaseSpeed = 1f;
-    public float MaxSpeed = 3f;
 
     public Transform nextBrickPoint;
 
@@ -55,9 +53,10 @@ public class GameController_2048Bricks : BaseGameController
 
     float GetSpeed ()
     {
-        var value = BaseSpeed + (gameState.Score / 1000f);
-        if (MaxSpeed < value) {
-            value = MaxSpeed;
+        var constants = GameDesignConstantsBehaviour.Instance.GameDesignConstants;
+        var value = constants.BaseSpeed + (gameState.Score / 1000f);
+        if (constants.MaxSpeed < value) {
+            value = constants.MaxSpeed;
         }
         return value;
     }
@@ -98,7 +97,7 @@ public class GameController_2048Bricks : BaseGameController
         nextBrick.Number = GetRandomNumber ();
         nextBrick.ColorIndex = GetColorIndex (nextBrick.Number);
 
-        speed = BaseSpeed;
+        speed = GameDesignConstantsBehaviour.Instance.GameDesignConstants.BaseSpeed;
     }
 
     void SpawnStartingBricks ()

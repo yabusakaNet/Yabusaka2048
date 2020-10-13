@@ -4,7 +4,8 @@ using UnityEngine.UI;
 [RequireComponent (typeof (Text))]
 public class SpeedCounter : MonoBehaviour
 {
-    Text label;
+    public Slider slider;
+    public Image sliderImage;
 
     protected GameState currentGameState;
 
@@ -14,7 +15,9 @@ public class SpeedCounter : MonoBehaviour
 
     void Start ()
     {
-        label = GetComponent<Text> ();
+        var constants = GameDesignConstantsBehaviour.Instance.GameDesignConstants;
+        slider.minValue = constants.BaseSpeed;
+        slider.maxValue = constants.MaxSpeed;
 
         OnProgressUpdate ();
         UserProgress.Current.ProgressUpdate += OnProgressUpdate;
@@ -46,7 +49,22 @@ public class SpeedCounter : MonoBehaviour
 
     void OnStateUpdate ()
     {
-        var speedLevel = Value <= 0 ? 1 : (Value / 100) + 1;
-        label.text = speedLevel.ToString ();
+        var constants = GameDesignConstantsBehaviour.Instance.GameDesignConstants;
+
+        slider.value = 1f + (Value / 1000f);
+
+        if (slider.normalizedValue < 0.14f) {
+            slider.normalizedValue = 0.14f;
+        }
+
+        if (slider.normalizedValue >= 1f) {
+            sliderImage.color = constants.SpeedSliderFourthColor;
+        } else if (slider.normalizedValue >= 0.75f) {
+            sliderImage.color = constants.SpeedSliderThirdColor;
+        } else if (slider.normalizedValue >= 0.5f) {
+            sliderImage.color = constants.SpeedSliderSecondColor;
+        } else if (slider.normalizedValue >= 0.25f) {
+            sliderImage.color = constants.SpeedSliderFirstColor;
+        }
     }
 }
