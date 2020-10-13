@@ -657,6 +657,7 @@ MonoBehaviour:
   fieldTransform: {fileID: 7385471459692434034}
   brickPrefab: {fileID: 114596421498408170, guid: 0f1b4b5fa9ad94647b3ec98a45dd3736,
     type: 3}
+  bgmSfx: {fileID: 4297665757920764413}
   coinProbability: 0.15
   fieldAnimator: {fileID: 5752008644723085461}
   speed: 1
@@ -669,7 +670,8 @@ MonoBehaviour:
   controls: 1
   landingSfx: {fileID: 7385471459995331097}
   mergingSfx: {fileID: 7385471460782174163}
-  bgmSfx: {fileID: 4297665757920764413}
+  BaseSpeed: 1
+  MaxSpeed: 3
 --- !u!1 &7385471460363564255
 GameObject:
   m_ObjectHideFlags: 0

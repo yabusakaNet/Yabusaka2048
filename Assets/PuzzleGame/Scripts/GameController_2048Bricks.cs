@@ -13,6 +13,9 @@ public class GameController_2048Bricks : BaseGameController
 {
     public float speed;
     public float fallSpeed;
+    public float BaseSpeed = 1f;
+    public float MaxSpeed = 3f;
+
     public Transform nextBrickPoint;
 
     public Brick columnPrefab;
@@ -32,8 +35,6 @@ public class GameController_2048Bricks : BaseGameController
     bool isFalling;
     bool isAnimating;
 
-    const float BaseSpeed = 1f;
-
     GameState2048Bricks gameState;
 
     class BrickPath
@@ -50,6 +51,15 @@ public class GameController_2048Bricks : BaseGameController
     int GetColorIndex (int number)
     {
         return Mathf.RoundToInt (Mathf.Log (number, 2) - 1);
+    }
+
+    float GetSpeed ()
+    {
+        var value = BaseSpeed + (gameState.Score / 1000f);
+        if (MaxSpeed < value) {
+            value = MaxSpeed;
+        }
+        return value;
     }
 
     void Start ()
@@ -224,7 +234,7 @@ public class GameController_2048Bricks : BaseGameController
         nextBrick.Number = gameState.NextBrick;
         nextBrick.ColorIndex = GetColorIndex (nextBrick.Number);
 
-        speed = BaseSpeed + (gameState.Score / 1000f);
+        speed = GetSpeed ();
 
         return true;
     }
@@ -423,7 +433,7 @@ public class GameController_2048Bricks : BaseGameController
                     );
 
                     gameState.Score += brick.Number;
-                    speed = BaseSpeed + (gameState.Score / 1000f);
+                    speed = GetSpeed ();
                     // Debug.Log(speed);
                 }
             );
