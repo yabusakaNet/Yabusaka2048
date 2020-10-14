@@ -5141,7 +5141,7 @@ Canvas:
   m_GameObject: {fileID: 953704843}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1666972232}
   m_PlaneDistance: 10
   m_PixelPerfect: 0
@@ -5220,6 +5220,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7385471460363564251, guid: 4804b6d5072423a45a7b78f42fff373d,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385471460363564251, guid: 4804b6d5072423a45a7b78f42fff373d,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1666972232}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4804b6d5072423a45a7b78f42fff373d, type: 3}
 --- !u!114 &968665743 stripped
