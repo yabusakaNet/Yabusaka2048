@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class HomeButton : MonoBehaviour
 {
-    public void OnHome()
-    {   
-        SceneManager.LoadScene("Top");
+    public void OnHome ()
+    {
+        FadeManager.Instance.LoadScene ("Top");
     }
 }

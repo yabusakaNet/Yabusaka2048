@@ -6,6 +6,7 @@ public class SpeedCounter : MonoBehaviour
 {
     public Slider slider;
     public Image sliderImage;
+    public Animator speedSliderAnimator;
 
     protected GameState currentGameState;
 
@@ -49,9 +50,22 @@ public class SpeedCounter : MonoBehaviour
 
     void OnStateUpdate ()
     {
+        if (GameDesignConstantsBehaviour.Instance == null) {
+            return;
+        }
+
         var constants = GameDesignConstantsBehaviour.Instance.GameDesignConstants;
 
+        var beforValue = slider.value;
+        var afterValue = 1f + (Value / 1000f);
+
+        if (beforValue == afterValue) {
+            return;
+        }
+
         slider.value = 1f + (Value / 1000f);
+
+        speedSliderAnimator.Play ("SpeedSlider@Blinking", 0, 0f);
 
         if (slider.normalizedValue < 0.14f) {
             slider.normalizedValue = 0.14f;

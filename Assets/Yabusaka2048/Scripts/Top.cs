@@ -6,16 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class Top : MonoBehaviour
 {
-    public void OnRestart()
+
+    public void OnRestart ()
     {
-        UserProgress.Current.GetGameState<GameState>(UserProgress.Current.CurrentGameId).SetField(new int[0]);
-        UserProgress.Current.SaveGameState(UserProgress.Current.CurrentGameId);
-        UserProgress.Current.Save();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene("Game");
+        UserProgress.Current.GetGameState<GameState> (UserProgress.Current.CurrentGameId).SetField (new int[0]);
+        UserProgress.Current.SaveGameState (UserProgress.Current.CurrentGameId);
+        UserProgress.Current.Save ();
+
+        FadeManager.Instance.LoadScene (SceneManager.GetActiveScene ().name);
+        FadeManager.Instance.LoadScene ("Game");
     }
-    public void OnRetry()
-    {   
-        SceneManager.LoadScene("Game");
+    public void OnRetry ()
+    {
+        FadeManager.Instance.LoadScene ("Game");
     }
 }
