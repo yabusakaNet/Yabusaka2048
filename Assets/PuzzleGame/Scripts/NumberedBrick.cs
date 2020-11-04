@@ -71,13 +71,13 @@ public class NumberedBrick : Brick
     public void DoLandingAnimation(Action onComplete)
     {
         GetComponent<Animator>().SetTrigger("Land");
-        StartCoroutine(DelayedCall(onComplete, 0.25f));
+        StartCoroutine(DelayedCall(onComplete, 0.15f));
     }
 
     public void DoMergingAnimation(Action onComplete)
     {
         GetComponent<Animator>().SetTrigger("Merge");
-        StartCoroutine(DelayedCall(onComplete, 0.25f));
+        StartCoroutine(DelayedCall(onComplete, 0.15f));
     }
 
     public void DoBlinkingAnimation()
