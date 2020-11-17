@@ -1162,7 +1162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -196, y: -432}
+  m_AnchoredPosition: {x: -280, y: -432}
   m_SizeDelta: {x: 93, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &108353316
@@ -3468,7 +3468,7 @@ PrefabInstance:
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
@@ -7260,32 +7260,42 @@ PrefabInstance:
     - target: {fileID: 303495287902850612, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 303495287902850612, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 303495287902850612, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 303495287902850612, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -62.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 303495287902850612, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 96
+      value: 104
       objectReference: {fileID: 0}
     - target: {fileID: 303495287902850612, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 75
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 303495287902850612, guid: b9feddba1babd470e91c7e7d5a4599aa,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 303495287902850612, guid: b9feddba1babd470e91c7e7d5a4599aa,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 748923792475784896, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
@@ -7295,7 +7305,7 @@ PrefabInstance:
     - target: {fileID: 748923792475784896, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1433706653581530949, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
@@ -7311,7 +7321,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 46d9ccbde151c405f8b4e544a1316e75,
+      objectReference: {fileID: 21300000, guid: ec44ab037ed74449aa1dc1c1a594ed44,
         type: 3}
     - target: {fileID: 3988938019976929487, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
@@ -7366,7 +7376,7 @@ PrefabInstance:
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
@@ -7386,17 +7396,17 @@ PrefabInstance:
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 475
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -62.5
+      value: -432
       objectReference: {fileID: 0}
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
@@ -7406,22 +7416,22 @@ PrefabInstance:
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4178278549600301587, guid: b9feddba1babd470e91c7e7d5a4599aa,
         type: 3}
@@ -7440,6 +7450,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7393826118351235974, guid: b9feddba1babd470e91c7e7d5a4599aa, type: 3}
+    - {fileID: 3828229362954899966, guid: b9feddba1babd470e91c7e7d5a4599aa, type: 3}
+    - {fileID: 3208539024443618302, guid: b9feddba1babd470e91c7e7d5a4599aa, type: 3}
+    - {fileID: 1433706653581530949, guid: b9feddba1babd470e91c7e7d5a4599aa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b9feddba1babd470e91c7e7d5a4599aa, type: 3}
 --- !u!224 &1620661152 stripped
 RectTransform:
@@ -7465,7 +7478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71916d40acac74527937158ae7ed867e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: https://play.google.com/store/apps/details?id=com.Lethargica.PuzzleMania
+  url: https://play.google.com/store/apps/details?id=com.yabusakaNet.FallingLOGO
 --- !u!114 &1637537827 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3988938019976929487, guid: b9feddba1babd470e91c7e7d5a4599aa,
@@ -7856,8 +7869,8 @@ RectTransform:
   - {fileID: 832097440}
   - {fileID: 108353315}
   - {fileID: 1788139378}
-  - {fileID: 490013184}
   - {fileID: 1620661152}
+  - {fileID: 490013184}
   - {fileID: 2994611}
   - {fileID: 777029854}
   - {fileID: 857770523}
@@ -8598,7 +8611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 196, y: -432}
+  m_AnchoredPosition: {x: 280, y: -432}
   m_SizeDelta: {x: 93, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1788139379
